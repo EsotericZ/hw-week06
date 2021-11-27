@@ -12,29 +12,36 @@
 </head>
 
 <body>
-    <main class="d-flex min-vh-100">
-        <div class="container-fluid my-auto">
-            <h1 class="display-3 text-center">Bootstrap UI Components</h1>
-        <div class="row justify-content-center">
-        <div class="col-12 col-md-9 p-4 bg-dark">
-            <div class="row">
-                <div class="col-12 col-md-4 ">
-                    <a href="./component-navbar.html" class="btn btn-block p-3 my-2 btn-success">Navbar</a>
-                </div>
-                <div class="col-12 col-md-4 ">
-                    <a href="./component-card.html" class="btn btn-block p-3 my-2 btn-danger">Cards</a>
-                </div>
-                <div class="col-12 col-md-4 ">
-                    <a href="./component-form.html" class="btn btn-block p-3 my-2 btn-info">Forms</a>
-                </div>
+    <header class="col-12">
+        <h1>Weather Dashboard</h1>
+    </header>
+    <div class="container">
+        <div class="row row-cols-auto">
+            <div class="col-md-4">
+                <h1>Search for a City:</h1>
+                <input type="search" id="query" name="q" placeholder="Search...">
+                <button id="search">Search</button>
             </div>
+            <div class="col-6 col-md-8"></div>
         </div>
-        <div class="col-12 mt-3 text-center">
-            <h4>This entire page is built with Bootstrap</h4>
+        <div class="row row-cols-auto">
+            <div class="col-md-4">
+                <button id="loc">Austin</button><br>
+                <button id="loc">Chicago</button><br>
+                <button id="loc">New York</button><br>
+                <button id="loc">Orlando</button><br>
+                <button id="loc">San Francisco</button><br>
+                <button id="loc">Seattle</button><br>
+                <button id="loc">Denver</button><br>
+                <button id="loc">Atlanta</button>
+            </div>
+            <div class="col">1</div>
+            <div class="col">2</div>
+            <div class="col">3</div>
+            <div class="col">4</div>
+            <div class="col">5</div>
         </div>
-        </div>
-        </div>
-    </main>
+    </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
