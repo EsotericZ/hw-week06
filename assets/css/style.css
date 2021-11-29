@@ -47,3 +47,7 @@ button {
     background-color: darkblue;
     color: white;
 }
+
+.todayBox {
+    border: 1px solid;
+}

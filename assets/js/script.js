@@ -1,35 +1,63 @@
-let APIKEY = 
-let requestUrl;
-let dt, date, icon, temp, wind, humd;
+let APIKEY;
+let city, lat, lon;
+let requestUrl, dt, date, loc, icon, line, temp, wind, humd, title; 
+let dtf, datef, iconf, tempf, windf, humdf;
 let day = [];
+let current = [];
 
 $("#aus").click(function() {
-    requestUrl = `http://api.openweathermap.org/data/2.5/forecast?q=Austin&units=imperial&appid=${APIKEY}`;
-    getApi(requestUrl);
+    city = 'Austin';
+    getApi();
 })
 
-function getApi(requestUrl) {
+// FIVE DAY FORECAST AND GET LAT/LON OF CITY
+function getApi() {
+    requestUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${APIKEY}`;
     fetch(requestUrl)
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
+            lat = data.city.coord.lat;
+            lon = data.city.coord.lon;
             let days = [4,12,20,28,32];
             for (let i = 0; i < days.length; i++) {
-                dt = data.list[days[i]].dt_txt.split(" ", 1)[0].split('-');
-                date = dt[1] + '/' + dt[2] + '/' + dt[0];
-                ic = data.list[days[i]].weather[0].icon;
-                icon = `http://openweathermap.org/img/w/${ic}.png`;
-                temp = data.list[days[i]].main.temp;
-                wind = data.list[days[i]].wind.speed;
-                humd = data.list[days[i]].main.humidity;
-                day.push([date, icon, temp, wind, humd]);
+                dtf = data.list[days[i]].dt_txt.split(" ", 1)[0].split('-');
+                datef = dtf[1] + '/' + dtf[2] + '/' + dtf[0];
+                icf = data.list[days[i]].weather[0].icon;
+                iconf = `http://openweathermap.org/img/w/${icf}.png`;
+                tempf = data.list[days[i]].main.temp;
+                windf = data.list[days[i]].wind.speed;
+                humdf = data.list[days[i]].main.humidity;
+                day.push([datef, iconf, tempf, windf, humdf]);
             }
-            addWeather();
+            getApi2();
+            addWeatherF();
         });
 }
 
-function addWeather() {
+// TODAYS WEATHER
+function getApi2() {
+    console.log('running', lat, lon)
+    requestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=${APIKEY}`;
+    fetch(requestUrl)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log('today', data);
+            icon = data.current.weather[0].icon;
+            temp = data.current.temp;
+            wind = data.current.wind_speed;
+            humd = data.current.humidity;
+            uvi = data.current.uvi;
+            current.push(city, datef, icon, temp, wind, humd, uvi)
+            console.log('c', current);
+            addWeather();
+        })
+}
+
+function addWeatherF() {
     for (let i =0; i < day.length; i++) {
         let j = i + 1;
         $("#dd"+j).append(day[i][0]);
@@ -39,4 +67,15 @@ function addWeather() {
         $("#dh"+j).append(`Humidity: ${day[i][4]} %`);
         $("#day"+j).addClass("activeday");
     }
+    $("#today").addClass("todayBox");
+}
+
+function addWeather() {
+    console.log('active')
+    title = current[0] + " " + current[1] + " " + current[2];
+    $("#loc").append(title);
+    $("#temp").append(`Temp: ${current[3]} °F`);
+    $("#wind").append(`Wind: ${current[4]} MPH`);
+    $("#humd").append(`Humidity: ${current[5]} %`);
+    $("#uv").append(`UV Index: ${current[6]}`);
 }
