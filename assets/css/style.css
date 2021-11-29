@@ -2,8 +2,11 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-div {
-    border: 1px solid;
+div.hr-line {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    border: 1px solid rgb(206, 205, 205);
 }
 
 header {
@@ -19,18 +22,28 @@ button {
     display: block;
 }
 
-#loc, #search {
-    background-color: rgb(175, 175, 175);
+#aus, #chi, #nyc, #orl, #sfr, #sea, #den, #atl, #search {
+    background-color: rgb(206, 205, 205);
     border-radius: 5px;
     color: black;
     display: grid;
     font-size: 15px;
-    margin: 5px 0px 5px 0px;
+    margin: 15px 0px 15px 0px;
     text-align: center;
     cursor: pointer;
 }
 
 #search {
     background-color: lightskyblue;
+    color: white;
+    margin-bottom: 10px;
+}
+
+#day1, #day2, #day3, #day4, #day5 {
+    margin: 15px;
+}
+
+.activeday {
+    background-color: darkblue;
     color: white;
 }

@@ -16,7 +16,7 @@
         <h1>Weather Dashboard</h1>
     </header>
     <div class="container-fluid">
-        <div class="row row-cols-auto">
+        <!-- <div class="row row-cols-auto">
             <div class="col-md-3">
                 <h1>Search for a City:</h1>
                 <input type="search" id="query" name="q" placeholder="Search...">
@@ -26,22 +26,92 @@
         </div>
         <div class="row row-cols-auto">
             <div class="col-md-3">
-                <button id="loc" class="form-control">Austin</button>
-                <button id="loc" class="form-control">Chicago</button>
-                <button id="loc" class="form-control">New York</button>
-                <button id="loc" class="form-control">Orlando</button>
-                <button id="loc" class="form-control">San Francisco</button>
-                <button id="loc" class="form-control">Seattle</button>
-                <button id="loc" class="form-control">Denver</button>
-                <button id="loc" class="form-control">Atlanta</button>
+                <button id="aus" class="form-control">Austin</button>
+                <button id="chi" class="form-control">Chicago</button>
+                <button id="nyc" class="form-control">New York</button>
+                <button id="orl" class="form-control">Orlando</button>
+                <button id="sfr" class="form-control">San Francisco</button>
+                <button id="sea" class="form-control">Seattle</button>
+                <button id="den" class="form-control">Denver</button>
+                <button id="atl" class="form-control">Atlanta</button>
             </div>
-            <div class="col">1</div>
+            <div class="col" id="day1">
+                <div id="dd1"></div>
+                <div id="icon"><img id="di1"></div>
+                <div id="dt1"></div>
+                <div id="dw1"></div>
+                <div id="dh1"></div>
+            </div>
             <div class="col">2</div>
             <div class="col">3</div>
             <div class="col">4</div>
             <div class="col">5</div>
         </div>
-    </div>
+    </div> -->
+
+        <div class="row row-cols-auto">
+            <div class="col-md-3">
+                <div>
+                    <h1>Search for a City:</h1>
+                    <input type="search" id="query" name="q" placeholder="Search...">
+                    <button id="search" class="form-control">Search</button>
+                    <div class="hr-line"></div>
+                    <button id="aus" class="form-control">Austin</button>
+                    <button id="chi" class="form-control">Chicago</button>
+                    <button id="nyc" class="form-control">New York</button>
+                    <button id="orl" class="form-control">Orlando</button>
+                    <button id="sfr" class="form-control">San Francisco</button>
+                    <button id="sea" class="form-control">Seattle</button>
+                    <button id="den" class="form-control">Denver</button>
+                    <button id="atl" class="form-control">Atlanta</button>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="row row-cols-auto">
+                    <div class="col-md-9">
+                        <div>2</div>
+                    </div>
+                </div>  
+                <h3>5 Day Forecast:</h3>
+                <div class="row row-cols-auto">
+                    <div class="col" id="day1">
+                        <div id="dd1"></div>
+                        <div id="icon"><img id="di1"></div>
+                        <div id="dt1"></div>
+                        <div id="dw1"></div>
+                        <div id="dh1"></div>
+                    </div>
+                    <div class="col" id="day2">
+                        <div id="dd2"></div>
+                        <div id="icon"><img id="di2"></div>
+                        <div id="dt2"></div>
+                        <div id="dw2"></div>
+                        <div id="dh2"></div>
+                    </div>
+                    <div class="col" id="day3">
+                        <div id="dd3"></div>
+                        <div id="icon"><img id="di3"></div>
+                        <div id="dt3"></div>
+                        <div id="dw3"></div>
+                        <div id="dh3"></div>
+                    </div>
+                    <div class="col" id="day4">
+                        <div id="dd4"></div>
+                        <div id="icon"><img id="di4"></div>
+                        <div id="dt4"></div>
+                        <div id="dw4"></div>
+                        <div id="dh4"></div>
+                    </div>
+                    <div class="col" id="day5">
+                        <div id="dd5"></div>
+                        <div id="icon"><img id="di5"></div>
+                        <div id="dt5"></div>
+                        <div id="dw5"></div>
+                        <div id="dh5"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
