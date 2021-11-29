@@ -1,4 +1,4 @@
-let APIKEY = '79739181b58a97089ce8160662a34b35';
+let APIKEY = 
 let requestUrl;
 let dt, date, icon, temp, wind, humd;
 let day = [];
