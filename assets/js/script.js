@@ -4,6 +4,7 @@ let requestUrl, dt, date, loc, icon, line, temp, wind, humd, title;
 let dtf, datef, iconf, tempf, windf, humdf;
 let day = [];
 let current = [];
+let a, b, result = [];
 let run = 0;
 
 $("button").click(function(e) {
@@ -93,5 +94,30 @@ function addWeather() {
     } else {
         $("#block2").addClass("uvib");
     }
-    run++;  
+    run++;
+    locations()  
+    searchHistory()
+}
+
+function locations() {
+    if (localStorage.getItem("locations") === null) {
+        newData = [city];
+        localStorage.setItem("locations", JSON.stringify(newData));
+    } else {
+        // a = [];
+        a = JSON.parse(localStorage.getItem("locations")) || [];
+        newData = city;
+        a.push(newData);
+        localStorage.setItem("locations", JSON.stringify(a));
+    }
+}
+
+function searchHistory() {
+    if (localStorage.getItem("locations") !== null) {
+        b = JSON.parse(localStorage.getItem("locations")) || [];
+    }
+    result = [];
+    $.each(b, function(i, e) {
+      if ($.inArray(e, result) == -1) result.push(e);
+    });
 }
