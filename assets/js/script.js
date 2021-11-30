@@ -1,14 +1,22 @@
-let APIKEY ;
+let APIKEY;
 let city, lat, lon;
 let requestUrl, dt, date, loc, icon, line, temp, wind, humd, title; 
 let dtf, datef, iconf, tempf, windf, humdf;
 let day = [];
 let current = [];
+let run = 0;
 
-$("#aus").click(function() {
-    city = 'Austin';
+$("button").click(function(e) {
+    if (run !== 0) {
+        day = [];
+        current = [];
+    }
+    city = e.target.textContent;
+    if (city === 'Search') {
+        city = $("#query").val();
+    }
     getApi();
-})
+});
 
 // FIVE DAY FORECAST AND GET LAT/LON OF CITY
 function getApi() {
@@ -32,11 +40,10 @@ function getApi() {
                 day.push([datef, iconf, tempf, windf, humdf]);
             }
             getApi2();
-            addWeatherF();
         });
 }
 
-// TODAYS WEATHER
+// CURRENT WEATHER
 function getApi2() {
     requestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=${APIKEY}`;
     fetch(requestUrl)
@@ -44,7 +51,6 @@ function getApi2() {
             return response.json();
         })
         .then(function (data) {
-            console.log('today', data);
             icon = data.current.weather[0].icon;
             temp = data.current.temp;
             wind = data.current.wind_speed;
@@ -55,27 +61,37 @@ function getApi2() {
         })
 }
 
-function addWeatherF() {
+// ADD INFORMATION TO THE SCREEN
+function addWeather() {
+    // 5 DAY FORECAST
     for (let i =0; i < day.length; i++) {
         let j = i + 1;
-        $("#dd"+j).append(day[i][0]);
+        $("#dd"+j).empty().append(day[i][0]);
         $("#di"+j).attr('src', day[i][1]);
-        $("#dt"+j).append(`Temp: ${day[i][2]} °F`);
-        $("#dw"+j).append(`Wind: ${day[i][3]} MPH`);
-        $("#dh"+j).append(`Humidity: ${day[i][4]} %`);
+        $("#dt"+j).empty().append(`Temp: ${day[i][2]} °F`);
+        $("#dw"+j).empty().append(`Wind: ${day[i][3]} MPH`);
+        $("#dh"+j).empty().append(`Humidity: ${day[i][4]} %`);
         $("#day"+j).addClass("activeday");
+        $("#today").addClass("todayBox");
     }
-    $("#today").addClass("todayBox");
-    $('#fiveday').append("5 Day Forecast:")
-}
+    $('#fiveday').empty().append("5 Day Forecast:");
 
-function addWeather() {
-    title = current[0] + " " + current[1];
-    $("#loc").append(title);
+    // CURRENT DAY    
+    title = current[0] + " (" + current[1] + ")";
+    $("#loc").empty().append(title);
     $("#icn").attr('src', `http://openweathermap.org/img/w/${current[2]}.png`);
-    $("#temp").append(`Temp: ${current[3]} °F`);
-    $("#wind").append(`Wind: ${current[4]} MPH`);
-    $("#humd").append(`Humidity: ${current[5]} %`);
-    $("#uv").append(`UV Index: ${current[6]}`);
+    $("#temp").empty().append(`Temp: ${current[3]} °F`);
+    $("#wind").empty().append(`Wind: ${current[4]} MPH`);
+    $("#humd").empty().append(`Humidity: ${current[5]} %`);
+    $("#block1").empty().append("UV Index: ");
+    $("#block2").empty().append(current[6]);
     $("#curr").addClass("todayBox");
+    if (current[6] < 3) {
+        $("#block2").addClass("uvig");
+    } else if (current[6] < 8) {
+        $("#block2").addClass("uvim");
+    } else {
+        $("#block2").addClass("uvib");
+    }
+    run++;  
 }

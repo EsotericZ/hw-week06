@@ -69,12 +69,21 @@ button {
     font-size: 25px;
 }
 
+#loc {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#block1, #block2 {
+    display: inline;
+}
+
 .activeday {
     background-color: rgb(4, 4, 99);
     color: white;
     font-weight: bold;
     padding: 10px;
-    line-height: 35px;
+    line-height: 40px;
 }
 
 .loc {
@@ -86,4 +95,32 @@ button {
 .todayBox {
     border: 1px solid;
     margin: 2px;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+    line-height: 40px;
+}
+
+.uvig {
+    border: 1px solid;
+    background-color: green;
+    color: white;
+    padding: 3px 20px 3px 20px;
+    border-radius: 8px;
+}
+
+.uvim {
+    border: 1px solid;
+    background-color: orange;
+    color: white;
+    padding: 3px 20px 3px 20px;
+    border-radius: 8px;
+}
+
+.uvib {
+    border: 1px solid;
+    background-color: rgb(216, 4, 4);
+    color: white;
+    padding: 3px 20px 3px 20px;
+    border-radius: 8px;
 }
