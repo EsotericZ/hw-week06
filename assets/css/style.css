@@ -13,13 +13,29 @@ header {
     color: white;
     background-image: linear-gradient(to right, lightskyblue, darkblue);
     text-align: center;
-    font-size: 20px;
+    font-size: 35px;
+    font-weight: bold;
     padding: 5px;
     margin-bottom: 20px;
 }
 
+h2 {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 25px;
+    font-weight: bold;
+}
+
 button {
     display: block;
+}
+
+#query {
+    font-size: 17px;
+    border: 1px solid;
 }
 
 #aus, #chi, #nyc, #orl, #sfr, #sea, #den, #atl, #search {
@@ -27,7 +43,7 @@ button {
     border-radius: 5px;
     color: black;
     display: grid;
-    font-size: 15px;
+    font-size: 17px;
     margin: 15px 0px 15px 0px;
     text-align: center;
     cursor: pointer;
@@ -43,11 +59,31 @@ button {
     margin: 15px;
 }
 
+#fiveday {
+    margin-top: 25px;
+    margin-bottom: 0px;
+    margin-left: 15px; 
+}
+
+#dd1, #dd2, #dd3, #dd4, #dd5 {
+    font-size: 25px;
+}
+
 .activeday {
-    background-color: darkblue;
+    background-color: rgb(4, 4, 99);
     color: white;
+    font-weight: bold;
+    padding: 10px;
+    line-height: 35px;
+}
+
+.loc {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
 }
 
 .todayBox {
     border: 1px solid;
+    margin: 2px;
 }

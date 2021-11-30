@@ -1,4 +1,4 @@
-let APIKEY;
+let APIKEY ;
 let city, lat, lon;
 let requestUrl, dt, date, loc, icon, line, temp, wind, humd, title; 
 let dtf, datef, iconf, tempf, windf, humdf;
@@ -38,7 +38,6 @@ function getApi() {
 
 // TODAYS WEATHER
 function getApi2() {
-    console.log('running', lat, lon)
     requestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=${APIKEY}`;
     fetch(requestUrl)
         .then(function (response) {
@@ -52,7 +51,6 @@ function getApi2() {
             humd = data.current.humidity;
             uvi = data.current.uvi;
             current.push(city, datef, icon, temp, wind, humd, uvi)
-            console.log('c', current);
             addWeather();
         })
 }
@@ -68,14 +66,16 @@ function addWeatherF() {
         $("#day"+j).addClass("activeday");
     }
     $("#today").addClass("todayBox");
+    $('#fiveday').append("5 Day Forecast:")
 }
 
 function addWeather() {
-    console.log('active')
-    title = current[0] + " " + current[1] + " " + current[2];
+    title = current[0] + " " + current[1];
     $("#loc").append(title);
+    $("#icn").attr('src', `http://openweathermap.org/img/w/${current[2]}.png`);
     $("#temp").append(`Temp: ${current[3]} °F`);
     $("#wind").append(`Wind: ${current[4]} MPH`);
     $("#humd").append(`Humidity: ${current[5]} %`);
     $("#uv").append(`UV Index: ${current[6]}`);
+    $("#curr").addClass("todayBox");
 }

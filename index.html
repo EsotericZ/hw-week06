@@ -16,44 +16,11 @@
         <h1>Weather Dashboard</h1>
     </header>
     <div class="container-fluid">
-        <!-- <div class="row row-cols-auto">
-            <div class="col-md-3">
-                <h1>Search for a City:</h1>
-                <input type="search" id="query" name="q" placeholder="Search...">
-                <button id="search" class="form-control">Search</button>
-            </div>
-            <div class="col-6 col-md-9"></div>
-        </div>
-        <div class="row row-cols-auto">
-            <div class="col-md-3">
-                <button id="aus" class="form-control">Austin</button>
-                <button id="chi" class="form-control">Chicago</button>
-                <button id="nyc" class="form-control">New York</button>
-                <button id="orl" class="form-control">Orlando</button>
-                <button id="sfr" class="form-control">San Francisco</button>
-                <button id="sea" class="form-control">Seattle</button>
-                <button id="den" class="form-control">Denver</button>
-                <button id="atl" class="form-control">Atlanta</button>
-            </div>
-            <div class="col" id="day1">
-                <div id="dd1"></div>
-                <div id="icon"><img id="di1"></div>
-                <div id="dt1"></div>
-                <div id="dw1"></div>
-                <div id="dh1"></div>
-            </div>
-            <div class="col">2</div>
-            <div class="col">3</div>
-            <div class="col">4</div>
-            <div class="col">5</div>
-        </div>
-    </div> -->
-
         <div class="row row-cols-auto">
             <div class="col-md-3">
                 <div>
-                    <h1>Search for a City:</h1>
-                    <input type="search" id="query" name="q" placeholder="Search...">
+                    <h2>Search for a City:</h2>
+                    <input type="search" id="query" class="form-control" name="q" placeholder="San Diego">
                     <button id="search" class="form-control">Search</button>
                     <div class="hr-line"></div>
                     <button id="aus" class="form-control">Austin</button>
@@ -67,16 +34,16 @@
                 </div>
             </div>
             <div class="col-md-9">
-                <div class="row row-cols-auto">
+                <div id="curr" class="row row-cols-auto">
                     <div class="col-md-9">
-                        <div id="loc"></div>
+                        <div id="loc" class="loc"><img id="icn"></div>
                         <div id="temp"></div>
                         <div id="wind"></div>
                         <div id="humd"></div>
                         <div id="uv"></div>
                     </div>
                 </div>  
-                <h3>5 Day Forecast:</h3>
+                <h3 id="fiveday"></h3>
                 <div class="row row-cols-auto">
                     <div class="col" id="day1">
                         <div id="dd1"></div>
