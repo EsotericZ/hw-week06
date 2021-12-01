@@ -4,18 +4,28 @@ let requestUrl, dt, date, loc, icon, line, temp, wind, humd, title;
 let dtf, datef, iconf, tempf, windf, humdf;
 let day = [];
 let current = [];
-let a, b, result = [];
+let a, b, result, rev = [];
 let run = 0;
 
+searchHistory()
+
+// SEARCH FOR NEW CITY
 $("button").click(function(e) {
     if (run !== 0) {
         day = [];
         current = [];
     }
-    city = e.target.textContent;
-    if (city === 'Search') {
-        city = $("#query").val();
+    city = $("#query").val();
+    getApi();
+});
+
+// SEARCH FOR CITY IN HISTORY
+$(".cityHist").click(function(e) {
+    if (run !== 0) {
+        day = [];
+        current = [];
     }
+    city = e.target.value;
     getApi();
 });
 
@@ -96,9 +106,9 @@ function addWeather() {
     }
     run++;
     locations()  
-    searchHistory()
 }
 
+// ADD SEARCHED CITY TO LOCAL STORAGE
 function locations() {
     if (localStorage.getItem("locations") === null) {
         newData = [city];
@@ -110,8 +120,10 @@ function locations() {
         a.push(newData);
         localStorage.setItem("locations", JSON.stringify(a));
     }
+    $("#addCity").after($(`<input type="button" class="cityHist form-control" value=${city} />`));
 }
 
+// PULL SEARCH HISTORY FROM LOCAL STORAGE AND CREATE BUTTONS
 function searchHistory() {
     if (localStorage.getItem("locations") !== null) {
         b = JSON.parse(localStorage.getItem("locations")) || [];
@@ -120,4 +132,7 @@ function searchHistory() {
     $.each(b, function(i, e) {
       if ($.inArray(e, result) == -1) result.push(e);
     });
+    for (let i = 0; i < result.length; i++) {
+        $("#addCity").after($(`<input type="button" class="cityHist form-control" value=${result[i]} />`));
+    }
 }

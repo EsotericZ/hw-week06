@@ -38,7 +38,7 @@ button {
     border: 1px solid;
 }
 
-#aus, #chi, #nyc, #orl, #sfr, #sea, #den, #atl, #search {
+#search {
     background-color: rgb(206, 205, 205);
     border-radius: 5px;
     color: black;
@@ -123,4 +123,15 @@ button {
     color: white;
     padding: 3px 20px 3px 20px;
     border-radius: 8px;
+}
+
+.cityHist {
+    background-color: rgb(206, 205, 205);
+    border-radius: 5px;
+    color: black;
+    display: grid;
+    font-size: 17px;
+    margin: 15px 0px 15px 0px;
+    text-align: center;
+    cursor: pointer;
 }
