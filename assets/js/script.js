@@ -111,16 +111,24 @@ function addWeather() {
 // ADD SEARCHED CITY TO LOCAL STORAGE
 function locations() {
     if (localStorage.getItem("locations") === null) {
+        // $("#addCity").after($(`<input type="button" class="cityHist form-control" value=${city} />`));
+        $(".hidden").attr({id: "cities", class: "form-control", value: 'city'});
+        $("#cities").attr('value', 'Save');
+        // $(".hidden").removeClass("hidden");
+        console.log("ran")
         newData = [city];
         localStorage.setItem("locations", JSON.stringify(newData));
     } else {
         // a = [];
         a = JSON.parse(localStorage.getItem("locations")) || [];
-        newData = city;
-        a.push(newData);
-        localStorage.setItem("locations", JSON.stringify(a));
+        console.log(city, a)
+        if (jQuery.inArray(city, a) === -1) {
+            // $("#addCity").after($(`<input type="button" class="cityHist form-control" value=${city} />`));
+            newData = city;
+            a.push(newData);
+            localStorage.setItem("locations", JSON.stringify(a));
+        }
     }
-    $("#addCity").after($(`<input type="button" class="cityHist form-control" value=${city} />`));
 }
 
 // PULL SEARCH HISTORY FROM LOCAL STORAGE AND CREATE BUTTONS
@@ -133,6 +141,6 @@ function searchHistory() {
       if ($.inArray(e, result) == -1) result.push(e);
     });
     for (let i = 0; i < result.length; i++) {
-        $("#addCity").after($(`<input type="button" class="cityHist form-control" value=${result[i]} />`));
+        // $("#addCity").after($(`<input type="button" class="cityHist form-control" value=${result[i]} />`));
     }
 }
