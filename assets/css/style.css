@@ -38,7 +38,7 @@ button {
     border: 1px solid;
 }
 
-#cities, #search {
+#city1, #city2, #city3, #city4, #city5, #city6, #city7, #city8, #search {
     background-color: rgb(206, 205, 205);
     border-radius: 5px;
     color: black;
@@ -136,7 +136,7 @@ button {
     cursor: pointer;
 }
 
-.hidden {
+.hidden1, .hidden2, .hidden3, .hidden4, .hidden5, .hidden6, .hidden7, .hidden8 {
     display: none;
     opacity: 0;
 }

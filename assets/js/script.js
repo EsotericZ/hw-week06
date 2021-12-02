@@ -1,4 +1,4 @@
-let APIKEY;
+let APIKEY = '79739181b58a97089ce8160662a34b35';
 let city, lat, lon;
 let requestUrl, dt, date, loc, icon, line, temp, wind, humd, title; 
 let dtf, datef, iconf, tempf, windf, humdf;
@@ -15,18 +15,11 @@ $("button").click(function(e) {
         day = [];
         current = [];
     }
-    city = $("#query").val();
-    getApi();
-});
-
-// SEARCH FOR CITY IN HISTORY
-$(".cityHist").click(function(e) {
-    if (run !== 0) {
-        day = [];
-        current = [];
+    city = e.target.textContent;
+    if (city === 'Search') {
+        city = $("#query").val();
     }
-    city = e.target.value;
-    getApi();
+    getApi(); 
 });
 
 // FIVE DAY FORECAST AND GET LAT/LON OF CITY
@@ -111,22 +104,28 @@ function addWeather() {
 // ADD SEARCHED CITY TO LOCAL STORAGE
 function locations() {
     if (localStorage.getItem("locations") === null) {
-        // $("#addCity").after($(`<input type="button" class="cityHist form-control" value=${city} />`));
-        $(".hidden").attr({id: "cities", class: "form-control", value: 'city'});
-        $("#cities").attr('value', 'Save');
-        // $(".hidden").removeClass("hidden");
-        console.log("ran")
+        $(".hidden1").attr({id: "city1", class: "form-control", vlaue: city});
+        $("#city1").html(city);
         newData = [city];
         localStorage.setItem("locations", JSON.stringify(newData));
     } else {
-        // a = [];
         a = JSON.parse(localStorage.getItem("locations")) || [];
-        console.log(city, a)
         if (jQuery.inArray(city, a) === -1) {
-            // $("#addCity").after($(`<input type="button" class="cityHist form-control" value=${city} />`));
             newData = city;
             a.push(newData);
             localStorage.setItem("locations", JSON.stringify(a));
+        }
+
+        b = JSON.parse(localStorage.getItem("locations")) || [];
+        result = [];
+        $.each(b, function(i, e) {
+            if ($.inArray(e, result) == -1) result.push(e);
+        });
+        rev = result.reverse();
+        for (let i = 0; i < rev.length; i++) {
+            let j = i + 1;
+            $(".hidden"+j).attr({id: "city"+j, class: "form-control", vlaue: rev[i]});
+            $("#city"+j).html(rev[i]);
         }
     }
 }
@@ -140,7 +139,10 @@ function searchHistory() {
     $.each(b, function(i, e) {
       if ($.inArray(e, result) == -1) result.push(e);
     });
-    for (let i = 0; i < result.length; i++) {
-        // $("#addCity").after($(`<input type="button" class="cityHist form-control" value=${result[i]} />`));
+    rev = result.reverse();
+    for (let i = 0; i < rev.length; i++) {
+        let j = i + 1;
+        $(".hidden"+j).attr({id: "city"+j, class: "form-control", vlaue: rev[i]});
+        $("#city"+j).html(rev[i]);
     }
 }
