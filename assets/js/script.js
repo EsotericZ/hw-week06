@@ -24,7 +24,7 @@ $("button").click(function(e) {
 
 // FIVE DAY FORECAST AND GET LAT/LON OF CITY
 function getApi() {
-    requestUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${APIKEY}`;
+    requestUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${APIKEY}`;
     fetch(requestUrl)
         .then(function (response) {
             return response.json();
@@ -37,7 +37,7 @@ function getApi() {
                 dtf = data.list[days[i]].dt_txt.split(" ", 1)[0].split('-');
                 datef = dtf[1] + '/' + dtf[2] + '/' + dtf[0];
                 icf = data.list[days[i]].weather[0].icon;
-                iconf = `https://openweathermap.org/img/w/${icf}.png`;
+                iconf = `http://openweathermap.org/img/w/${icf}.png`;
                 tempf = data.list[days[i]].main.temp;
                 windf = data.list[days[i]].wind.speed;
                 humdf = data.list[days[i]].main.humidity;
@@ -49,7 +49,7 @@ function getApi() {
 
 // CURRENT WEATHER
 function getApi2() {
-    requestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=${APIKEY}`;
+    requestUrl = `http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=${APIKEY}`;
     fetch(requestUrl)
         .then(function (response) {
             return response.json();
@@ -83,7 +83,7 @@ function addWeather() {
     // CURRENT DAY    
     title = current[0] + " (" + current[1] + ")";
     $("#loc").empty().append(title);
-    $("#icn").attr('src', `https://openweathermap.org/img/w/${current[2]}.png`);
+    $("#icn").attr('src', `http://openweathermap.org/img/w/${current[2]}.png`);
     $("#temp").empty().append(`Temp: ${current[3]} °F`);
     $("#wind").empty().append(`Wind: ${current[4]} MPH`);
     $("#humd").empty().append(`Humidity: ${current[5]} %`);
