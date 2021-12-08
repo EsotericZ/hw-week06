@@ -24,7 +24,6 @@ $("button").click(function(e) {
 
 // FIVE DAY FORECAST AND GET LAT/LON OF CITY
 function getApi() {
-    // requestUr = `https://cors-anywhere.herokuapp.com/https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${APIKEY}`;
     requestUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${APIKEY}`;
     fetch(requestUrl)
         .then(function (response) {
@@ -50,7 +49,6 @@ function getApi() {
 
 // CURRENT WEATHER
 function getApi2() {
-    // requestUr = `https://cors-anywhere.herokuapp.com/https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=${APIKEY}`;
     requestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=${APIKEY}`;
     fetch(requestUrl)
         .then(function (response) {
